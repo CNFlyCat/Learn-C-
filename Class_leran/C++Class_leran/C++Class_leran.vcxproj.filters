@@ -24,10 +24,28 @@
     <ClCompile Include="Circle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="深拷贝与浅拷贝.cpp">
+    <ClCompile Include="01深拷贝与浅拷贝.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="类对象作为类成员.cpp">
+    <ClCompile Include="02类对象作为类成员.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="03静态成员变量.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="04对象模型和this指针.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="05友元的学习.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="06运算符重载学习.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="07继承的学习.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="08多态的学习.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
