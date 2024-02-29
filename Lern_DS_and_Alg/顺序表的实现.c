@@ -35,12 +35,26 @@ int listInit(ArrayList* list)
 // 顺序表插入元素
 int insertList(ArrayList* list, ElementType element, int index)
 {
+	// 超出范围扩容
+	if (index < 0 || index > list->size) return 0;
+	// 当容量不足时扩容
+	if (list->size == list->capacity)
+	{
+		//list->capacity >> 1 相当于将容量除2，所以扩容1.5倍
+		int newCacity = list->capacity + (list->capacity >> 1);
+		ElementType* newArray = realloc(list->array, sizeof(ElementType) * newCacity);
+		if (newArray == NULL) return 0;
+		list->array = newArray;
+		list->capacity = newCacity;
+	}
+
 	for (int i = list->size; i > index; i--)
 	{
 		list->array[i] = list->array[i - 1];
 	}
 	list->array[index] = element;
 	list->size++;
+
 }
 
 // 顺序表删除元素
@@ -61,6 +75,7 @@ int delElement(ArrayList* list, int index)
 void printList(ArrayList* list)
 {
 	printf("size: %d\n", list->size);
+	printf("capacity: %d\n", list->capacity);
 	for (int i = 0; i < list->size; i++)
 		printf("%d ", list->array[i]);
 	printf("\n");
@@ -68,27 +83,32 @@ void printList(ArrayList* list)
 }
 
 
-int main()
-{
-	ArrayList list;
-	// 创建顺序表
-	// 顺序表元素序号从0递增
-	if (listInit(&list))
-	{
-		list.array[0] = 5;
-		list.array[1] = 8;
-		list.array[2] = 10;
-		list.size = 3;
-		insertList(&list, 15, 2);
-		printList(&list);
-		if (!delElement(&list, 0))
-			printf("删除失败！超出范围！\n");
-		printList(&list);
-	}
-	else
-	{
-		printf("顺序表初始化失败！");
-	}
-
-	return 0;
-}
+//int main()
+//{
+//	ArrayList list;
+//	// 创建顺序表
+//	// 顺序表元素序号从0递增
+//	if (listInit(&list))
+//	{
+//		for (int i = 0; i < 15; i++)
+//		{
+//			insertList(&list, i*10, i);
+//		}
+//		insertList(&list, 15, 3);
+//		printList(&list);
+//		if (!delElement(&list, 0))
+//			printf("删除失败！超出范围！\n");
+//		printList(&list);
+//	}
+//	else
+//	{
+//		printf("顺序表初始化失败！");
+//	}
+//
+//	if (list.array != NULL)
+//	{
+//		free(list.array);
+//		list.array = NULL;
+//	}
+//	return 0;
+//}
