@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 #define DataType int
 
 // 二叉树，最多只有两个分支
@@ -24,24 +26,48 @@ TreeNode* creatNewNode(DataType data)
 	return newNode;
 }
 
+int Search(TreeNode* rootPtr, int data)
+{
+	if (!rootPtr) return 0;
+	else if (rootPtr->data == data) printf("%d", data);
+	else if (data < rootPtr->data) return Search(rootPtr->left, data);
+	else return Search(rootPtr->right, data);
+}
+
 // 插入节点
 // 使用二级指针的原因是，在这个函数里修改mian函数中指针指向的地址,直接传一级指针是无法做到修改main函数内的指针指向的地址的
-int insert(TreeNode** rootPtr, DataType data)
+TreeNode* Insert(TreeNode* rootPtr, DataType data)
 {
-	if (!*rootPtr) 
+	// 如果树根地址为空，则创建一个根
+	if (!rootPtr)
 	{
-		*rootPtr = creatNewNode(data); 
+		rootPtr = creatNewNode(data);
+		return rootPtr;
 	}
+	// 与当前的数据比较大小，若是小于则放在左边，然后使用递归的方式来实现后续比较
+	else if (data <= rootPtr->data)
+	{
+		rootPtr->left = Insert(rootPtr->left, data);
+	}
+	else
+	{
+		rootPtr->right = Insert(rootPtr->right, data);
+	}
+	return rootPtr;
 }
 
 
 
 int main()
 {
-	TreeNode* treeRoot;
-	treeRoot = NULL;
+	TreeNode* treeRoot = NULL; // 创建保存树根节点地址的变量
 	
+	treeRoot = Insert(treeRoot, 15);	// 插入数据，注意：需要用&treeRoot来传入指针，否则会发生错误
+	treeRoot = Insert(treeRoot, 10);
+	treeRoot = Insert(treeRoot, 5);
+	treeRoot = Insert(treeRoot, 19);
 
+	Search(treeRoot, 19);
 
 	return 1;
 }

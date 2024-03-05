@@ -1,4 +1,3 @@
 ﻿  main.c
-E:\C++\Learn-C-\Learn_Tree\main.c(35): warning C4716: 'insert': must return a value
-E:\C++\Learn-C-\Learn_Tree\main.c(41): warning C4717: 'test': recursive on all control paths, function will cause runtime stack overflow
+E:\C++\Learn-C-\Learn_Tree\main.c(33): warning C4715: 'Search': not all control paths return a value
   Learn_Tree.vcxproj -> E:\C++\Learn-C-\Learn_Tree\x64\Debug\Learn_Tree.exe
