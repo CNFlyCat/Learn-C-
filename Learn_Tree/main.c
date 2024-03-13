@@ -57,6 +57,32 @@ TreeNode* Insert(TreeNode* rootPtr, DataType data)
 }
 
 
+// 使用递归找最大值
+TreeNode* findMax(TreeNode* rootPtr)
+{
+	// 判断指针是否为空
+	if (!rootPtr)
+	{
+		printf("Error empty tree!");
+		return -1;
+	}
+	// 寻找下一个左孩子
+	if (rootPtr->right)
+		rootPtr = findMax(rootPtr->right);
+
+	return rootPtr;
+}
+
+int treeHeight(TreeNode* root)
+{
+	if (!root) return 0;
+	int Max = 0;
+
+	Max = treeHeight(root->left);
+	Max = treeHeight(root->right);
+	return Max + 1;
+
+}
 
 int main()
 {
@@ -66,8 +92,15 @@ int main()
 	treeRoot = Insert(treeRoot, 10);
 	treeRoot = Insert(treeRoot, 5);
 	treeRoot = Insert(treeRoot, 19);
+	treeRoot = Insert(treeRoot, 39);
+	treeRoot = Insert(treeRoot, 18);
+	treeRoot = Insert(treeRoot, 16);
+	treeRoot = Insert(treeRoot, 17);
+	printf("%d", treeHeight(treeRoot));
+	/*TreeNode* temp = findMax(treeRoot);
+	printf("%d ", temp->data);*/
 
-	Search(treeRoot, 19);
+	//Search(treeRoot, 19);
 
 	return 1;
 }

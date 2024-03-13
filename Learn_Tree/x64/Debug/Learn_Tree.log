@@ -1,3 +1,4 @@
 ﻿  main.c
-E:\C++\Learn-C-\Learn_Tree\main.c(33): warning C4715: 'Search': not all control paths return a value
+E:\C++\Learn-C-\Learn_Tree\main.c(67,12): warning C4047: 'return': 'TreeNode *' differs in levels of indirection from 'int'
+E:\C++\Learn-C-\Learn_Tree\main.c(35): warning C4715: 'Search': not all control paths return a value
   Learn_Tree.vcxproj -> E:\C++\Learn-C-\Learn_Tree\x64\Debug\Learn_Tree.exe
